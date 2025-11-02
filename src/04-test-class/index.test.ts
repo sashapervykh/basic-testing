@@ -8,6 +8,7 @@ import {
 describe('BankAccount', () => {
   let bankAccount: ReturnType<typeof getBankAccount>;
   beforeEach(() => (bankAccount = getBankAccount(5)));
+  afterEach(() => jest.clearAllMocks());
 
   test('should create account with initial balance', () => {
     expect(bankAccount.getBalance()).toBe(5);
