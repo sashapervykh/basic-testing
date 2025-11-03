@@ -16,7 +16,6 @@ describe('doStuffByTimeout', () => {
     const callback = jest.fn();
     jest.spyOn(global, 'setTimeout');
     doStuffByTimeout(callback, 1000);
-    expect(setTimeout).toHaveBeenCalled();
     expect(setTimeout).toHaveBeenCalledTimes(1);
     expect(setTimeout).toHaveBeenCalledWith(callback, 1000);
   });
@@ -29,7 +28,6 @@ describe('doStuffByTimeout', () => {
 
     jest.runAllTimers();
 
-    expect(callback).toHaveBeenCalled();
     expect(callback).toHaveBeenCalledTimes(1);
   });
 });
@@ -47,7 +45,7 @@ describe('doStuffByInterval', () => {
     const callback = jest.fn();
     jest.spyOn(global, 'setInterval');
     doStuffByInterval(callback, 1000);
-    expect(setInterval).toHaveBeenCalled();
+
     expect(setInterval).toHaveBeenCalledTimes(1);
     expect(setInterval).toHaveBeenCalledWith(callback, 1000);
   });
@@ -60,7 +58,6 @@ describe('doStuffByInterval', () => {
 
     jest.advanceTimersByTime(1000);
 
-    expect(callback).toHaveBeenCalled();
     expect(callback).toHaveBeenCalledTimes(1);
 
     jest.advanceTimersByTime(1000);
